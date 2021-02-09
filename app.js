@@ -99,6 +99,3 @@ const addMarksToBoard = (function() {
 
 
 
-console.log(mandy);
-console.log(allPlayers);
-
