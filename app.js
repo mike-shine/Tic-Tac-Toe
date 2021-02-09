@@ -5,6 +5,7 @@ clearButton.addEventListener('click', () => {
   [...Object.keys(displayController)].forEach(space => {
     displayController[space].textContent = '';
   });
+  currentPlayer = allPlayers[0];
 });
 
 const gameBoard = (function() {
@@ -97,7 +98,9 @@ const addMarksToBoard = (function() {
 
   [...Object.keys(displayController)].forEach(space => {
     displayController[space].addEventListener('click', () => {
-      displayController[space].textContent = currentPlayer.mark;
+      if (displayController[space].textContent === '' ) {
+        displayController[space].textContent = currentPlayer.mark;
+      }
     })
   });
 })();
