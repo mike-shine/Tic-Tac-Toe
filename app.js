@@ -1,5 +1,12 @@
 const body = document.querySelector('body');
 
+const clearButton = document.getElementById('clearButton');
+clearButton.addEventListener('click', () => {
+  [...Object.keys(displayController)].forEach(space => {
+    displayController[space].textContent = '';
+  });
+});
+
 const gameBoard = (function() {
   let X = 'X';
   let O = 'O';
