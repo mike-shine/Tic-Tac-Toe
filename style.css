@@ -1,0 +1,20 @@
+.rowOne {
+  border-bottom: 2px solid black;
+}
+
+.rowThree {
+  border-top: 2px solid black;
+}
+
+.spaceOne {
+  border-right: 2px solid black;
+}
+
+.spaceThree {
+  border-left: 2px solid black;
+}
+
+td {
+  padding: 50px;
+  font-size: 64px;
+}
