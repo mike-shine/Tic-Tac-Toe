@@ -6,6 +6,7 @@ clearButton.addEventListener('click', () => {
     displayController[space].textContent = '';
   });
   currentPlayer = allPlayers[0];
+  turnsElapsed = 0;
 });
 
 const gameBoard = (function() {
@@ -18,6 +19,11 @@ const gameBoard = (function() {
   ];
   return {X, O, gameArray};
 })();
+
+
+
+
+
 
 const displayController = (function() {
   const topLeft = document.querySelector('.rowOne .spaceOne');
@@ -40,6 +46,13 @@ const displayController = (function() {
 
   return {topLeft, topCenter, topRight, middleLeft, center, middleRight, bottomLeft, bottomCenter, bottomRight};
 })();
+
+
+
+
+
+
+
 
 let allPlayers = [];
 
@@ -71,8 +84,6 @@ const Player = function(name) {
   return {playerName, movesPlayed, amIPlayer1, mark};
 };
 
-
-
 let player1 = true;
 let xHasBeenTaken = false;
 
@@ -84,7 +95,14 @@ allPlayers.push(mandy);
 let currentPlayer = allPlayers[0];
 
 
-let currentTurn = 0;
+
+
+
+
+
+
+
+let turnsElapsed = 0;
 
 const addMarksToBoard = (function() {
   let gameBoardTable = document.querySelector('.gameBoardTable');
@@ -98,12 +116,39 @@ const addMarksToBoard = (function() {
 
   [...Object.keys(displayController)].forEach(space => {
     displayController[space].addEventListener('click', () => {
-      if (displayController[space].textContent === '' ) {
+      if (displayController[space].textContent === '') {
         displayController[space].textContent = currentPlayer.mark;
+        turnsElapsed++;
       }
     })
   });
 })();
+
+
+const gameOver = (function() {
+  const tieGame = (() => {
+    setTimeout(() => {
+      alert('Tie game! Well done. Press the clear button to begin a new round.')
+    }, 100);
+  });
+
+  let gameBoardTable = document.querySelector('.gameBoardTable');
+  gameBoardTable.addEventListener('click', () => {
+     if (turnsElapsed === 9) {
+       tieGame();
+     }
+  });
+})();
+
+
+
+
+
+
+
+
+
+
 
 
 
