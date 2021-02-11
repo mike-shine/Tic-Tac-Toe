@@ -2,8 +2,9 @@ const body = document.querySelector('body');
 
 const clearButton = document.getElementById('clearButton');
 clearButton.addEventListener('click', () => {
-  [...Object.keys(displayController)].forEach(space => {
+  Object.keys(displayController).forEach((space, index) => {
     displayController[space].textContent = '';
+    gameBoard.gameArray[index] = '';
   });
   currentPlayer = allPlayers[0];
   turnsElapsed = 0;
@@ -53,9 +54,9 @@ const gameBoard = (function() {
   let bRT = displayController.bottomRight.textContent;
 
   let blankGameArray = [
-    ['', '', ''],
-    ['', '', ''],
-    ['', '', '']
+    '', '', '',
+    '', '', '',
+    '', '', ''
   ]
 
   let gameArray = [
@@ -141,7 +142,6 @@ const addMarksToBoard = (function() {
       if (displayController[space].textContent === '') {
         displayController[space].textContent = currentPlayer.mark;
         gameBoard.gameArray[index] = currentPlayer.mark;
-        console.log(index + 1);
         console.log(gameBoard.gameArray);
         turnsElapsed++;
       }
