@@ -13,6 +13,47 @@ clearButton.addEventListener('click', () => {
   turnsElapsed = 0;
 });
 
+let player1Name = prompt('Player 1, please enter your name!');
+let player2Name = prompt('Player 2, please enter your name!');
+
+let allPlayers = [];
+let player1Check = true;
+let xHasBeenTaken = false;
+
+const Player = function(name) {
+  const playerName = name;
+  const movesPlayed = [];
+  let amIPlayer1;
+  let mark;
+  let currentMarks = [];
+
+  if (player1Check) {
+    amIPlayer1 = true;
+    player1Check = false;
+  } else {
+    amIPlayer1 = false;
+  }
+
+  if (amIPlayer1) {
+    mark = prompt(`${name}, are you Xs or Os? Please enter either a capital X or capital O.`);
+    if (mark === 'X') {
+      xHasBeenTaken = true;
+    }
+  } else {
+    if (xHasBeenTaken) {
+      mark = 'O';
+    } else {
+      mark = 'X';
+    }
+  }
+  return {playerName, movesPlayed, amIPlayer1, mark, currentMarks};
+};
+
+let player1 = Player(player1Name);
+allPlayers.push(player1);
+let player2 = Player(player2Name);
+allPlayers.push(player2);
+
 
 const displayController = (function() {
   const topLeft = document.getElementById('1');
@@ -52,44 +93,13 @@ const gameBoard = (function() {
 
 
 
-let allPlayers = [];
 
-const Player = function(name) {
-  const playerName = name;
-  const movesPlayed = [];
-  let amIPlayer1;
-  let mark;
-  let currentMarks = [];
 
-  if (player1) {
-    amIPlayer1 = true;
-    player1 = false;
-  } else {
-    amIPlayer1 = false;
-  }
 
-  if (amIPlayer1) {
-    mark = prompt(`${name}, are you Xs or Os? Please enter either a capital X or capital O.`);
-    if (mark === 'X') {
-      xHasBeenTaken = true;
-    }
-  } else {
-    if (xHasBeenTaken) {
-      mark = 'O';
-    } else {
-      mark = 'X';
-    }
-  }
-  return {playerName, movesPlayed, amIPlayer1, mark, currentMarks};
-};
 
-let player1 = true;
-let xHasBeenTaken = false;
 
-const mike = Player('Mike');
-allPlayers.push(mike);
-const mandy = Player('Mandy');
-allPlayers.push(mandy);
+
+
 
 let currentPlayer = allPlayers[0];
 
