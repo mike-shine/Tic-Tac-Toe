@@ -6,16 +6,15 @@
 h1 {
   font-size: 72px;
   text-align: center;
-  text-shadow: chartreuse;
+  text-shadow: 1px 1px #c895e2;
   color: #bc13fe;
 
 }
 
 body {
   color: #bc13fe;
+  text-shadow: 1px 1px #c895e2;
 }
-
-
 
 .flexContainer {
   display: flex;
@@ -33,6 +32,7 @@ button {
   height: 50px;
   background-color: #9b73af;
   color: #413049;
+  text-shadow: 1px 1px #c895e2;
 }
 
 .rowOne {
