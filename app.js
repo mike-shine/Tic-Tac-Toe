@@ -13,21 +13,13 @@ clearButton.addEventListener('click', () => {
 
 const displayController = (function() {
   const topLeft = document.getElementById('1');
-
   const topCenter = document.getElementById('2');
-
   const topRight = document.getElementById('3');
-
   const middleLeft = document.getElementById('4');
-
   const center = document.getElementById('5');
-
   const middleRight = document.getElementById('6');
-
   const bottomLeft = document.getElementById('7');
-
   const bottomCenter = document.getElementById('8');
-
   const bottomRight = document.getElementById('9');
 
   return {topLeft, topCenter, topRight, middleLeft, center, middleRight, bottomLeft, bottomCenter, bottomRight};
@@ -36,21 +28,13 @@ const displayController = (function() {
 
 const gameBoard = (function() {
   let tLT = displayController.topLeft.textContent;
-
   let tCT = displayController.topCenter.textContent;
-
   let tRT = displayController.topRight.textContent;
-
   let mLT = displayController.middleLeft.textContent;
-
   let cT = displayController.center.textContent;
-
   let mRT = displayController.middleRight.textContent;
-
   let bLT = displayController.bottomLeft.textContent;
-
   let bCT = displayController.bottomCenter.textContent;
-
   let bRT = displayController.bottomRight.textContent;
 
   let gameArray = [
@@ -107,14 +91,6 @@ let currentPlayer = allPlayers[0];
 
 
 
-
-const gameplay = (function() {
-
-})/*()*/;
-
-
-
-
 let turnsElapsed = 0;
 
 const addMarksToBoard = (function() {
@@ -127,16 +103,11 @@ const addMarksToBoard = (function() {
      }
   });
 
-  function getSpaceId(element) {
-    return Number(element.getAttribute('id'));
-  }
-
   Object.keys(displayController).forEach((space, index) => {
     displayController[space].addEventListener('click', () => {
       if (displayController[space].textContent === '') {
         displayController[space].textContent = currentPlayer.mark;
         gameBoard.gameArray[index] = currentPlayer.mark;
-        console.log(gameBoard.gameArray);
         turnsElapsed++;
       }
     })
