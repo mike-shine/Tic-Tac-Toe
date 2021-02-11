@@ -53,18 +53,12 @@ const gameBoard = (function() {
 
   let bRT = displayController.bottomRight.textContent;
 
-  let blankGameArray = [
-    '', '', '',
-    '', '', '',
-    '', '', ''
-  ]
-
   let gameArray = [
     tLT, tCT, tRT,
     mLT, cT, mRT,
     bLT, bCT, bRT
   ];
-  return {gameArray, blankGameArray};
+  return {gameArray};
 })();
 
 
@@ -151,11 +145,20 @@ const addMarksToBoard = (function() {
 
 
 const gameOver = (function() {
-  const tieGame = (() => {
+
+  const tieGame = () => {
     setTimeout(() => {
       alert('Tie game! Well done. Press the clear button to begin a new round.')
     }, 100);
-  });
+  }
+
+  const playerWins = function() {
+    setTimeout(() => {
+      Boolean(currentPlayer.playerName === allPlayers[0].playerName)
+      ? alert(`Congratulations ${allPlayers[1].playerName} on your victory!`)
+      : alert(`Congratulations ${allPlayers[0].playerName} on your victory!`);
+    }, 100);
+  };
 
   let gameBoardTable = document.querySelector('.gameBoardTable');
   gameBoardTable.addEventListener('click', () => {
@@ -165,11 +168,6 @@ const gameOver = (function() {
   });
 })();
 
-// assign id to each text var, corresponding exactly to placement name
-// iterate through gameboard object
-// getElementById, and change that text too
-
-// add ids to topLeft, etc, to correspond with index in gameArray?
 
 
 
