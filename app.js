@@ -9,46 +9,62 @@ clearButton.addEventListener('click', () => {
   turnsElapsed = 0;
 });
 
-const gameBoard = (function() {
-  let X = 'X';
-  let O = 'O';
-  let gameArray = [
-    [X, O, X],
-    [O, X, O],
-    [X, O, X]
-  ];
-  return {X, O, gameArray};
-})();
-
-
-
-
-
 
 const displayController = (function() {
-  const topLeft = document.querySelector('.rowOne .spaceOne');
+  const topLeft = document.getElementById('1');
 
-  const topCenter = document.querySelector('.rowOne .spaceTwo');
+  const topCenter = document.getElementById('2');
 
-  const topRight = document.querySelector('.rowOne .spaceThree');
+  const topRight = document.getElementById('3');
 
-  const middleLeft = document.querySelector('.rowTwo .spaceOne');
+  const middleLeft = document.getElementById('4');
 
-  const center = document.querySelector('.rowTwo .spaceTwo');
+  const center = document.getElementById('5');
 
-  const middleRight = document.querySelector('.rowTwo .spaceThree');
+  const middleRight = document.getElementById('6');
 
-  const bottomLeft = document.querySelector('.rowThree .spaceOne');
+  const bottomLeft = document.getElementById('7');
 
-  const bottomCenter = document.querySelector('.rowThree .spaceTwo');
+  const bottomCenter = document.getElementById('8');
 
-  const bottomRight = document.querySelector('.rowThree .spaceThree');
+  const bottomRight = document.getElementById('9');
 
   return {topLeft, topCenter, topRight, middleLeft, center, middleRight, bottomLeft, bottomCenter, bottomRight};
 })();
 
 
+const gameBoard = (function() {
+  let tLT = displayController.topLeft.textContent;
 
+  let tCT = displayController.topCenter.textContent;
+
+  let tRT = displayController.topRight.textContent;
+
+  let mLT = displayController.middleLeft.textContent;
+
+  let cT = displayController.center.textContent;
+
+  let mRT = displayController.middleRight.textContent;
+
+  let bLT = displayController.bottomLeft.textContent;
+
+  let bCT = displayController.bottomCenter.textContent;
+
+  let bRT = displayController.bottomRight.textContent;
+
+  let blankGameArray = [
+    ['', '', ''],
+    ['', '', ''],
+    ['', '', '']
+  ]
+
+  let gameArray = [
+    tLT, tCT, tRT,
+    mLT, cT, mRT,
+    bLT, bCT, bRT
+  ];
+  return {gameArray, blankGameArray};
+})();
 
 
 
@@ -97,7 +113,9 @@ let currentPlayer = allPlayers[0];
 
 
 
+const gameplay = (function() {
 
+})/*()*/;
 
 
 
@@ -114,10 +132,17 @@ const addMarksToBoard = (function() {
      }
   });
 
-  [...Object.keys(displayController)].forEach(space => {
+  function getSpaceId(element) {
+    return Number(element.getAttribute('id'));
+  }
+
+  Object.keys(displayController).forEach((space, index) => {
     displayController[space].addEventListener('click', () => {
       if (displayController[space].textContent === '') {
         displayController[space].textContent = currentPlayer.mark;
+        gameBoard.gameArray[index] = currentPlayer.mark;
+        console.log(index + 1);
+        console.log(gameBoard.gameArray);
         turnsElapsed++;
       }
     })
@@ -140,10 +165,11 @@ const gameOver = (function() {
   });
 })();
 
+// assign id to each text var, corresponding exactly to placement name
+// iterate through gameboard object
+// getElementById, and change that text too
 
-
-
-
+// add ids to topLeft, etc, to correspond with index in gameArray?
 
 
 
