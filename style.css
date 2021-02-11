@@ -35,6 +35,10 @@ button {
   text-shadow: 1px 1px #c895e2;
 }
 
+button:hover {
+  box-shadow: 0 12px 16px 0 rgba(203, 197, 197, 0.24),0 17px 50px 0 rgba(201, 194, 194, 0.19);;
+}
+
 .rowOne {
   border-bottom: 2px solid black;
   border-color: #795a89;
