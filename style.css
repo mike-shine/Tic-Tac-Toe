@@ -1,32 +1,58 @@
 * {
   font-family: 'Amatic SC', cursive;
+  background-color: #1f1723;
 }
 
 h1 {
   font-size: 72px;
   text-align: center;
+  text-shadow: chartreuse;
+  color: #bc13fe;
+
+}
+
+body {
+  color: #bc13fe;
+}
+
+
+
+.flexContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.smallerContainer {
+  justify-content: center;
 }
 
 button {
   font-size: 36px;
   width: 75px;
   height: 50px;
+  background-color: #9b73af;
+  color: #413049;
 }
 
 .rowOne {
   border-bottom: 2px solid black;
+  border-color: #795a89;
 }
 
 .rowThree {
   border-top: 2px solid black;
+  border-color: #795a89;
 }
 
 .spaceOne {
   border-right: 2px solid black;
+  border-color: #795a89;
 }
 
 .spaceThree {
   border-left: 2px solid black;
+  border-color: #795a89;
 }
 
 td {
