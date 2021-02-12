@@ -12,26 +12,48 @@ let player1Name, player2Name;
 
 function getNameFromModal(player) {
   document.getElementById('submitButton').onclick = () => {
-    player = document.getElementById('playerNameModal').value;
+    if (!player1Name) {
+      player1Name = document.getElementById('playerNameModal').value;
+      modal.style.display = 'none';
+      console.log(document.getElementById('playerNameModal').value);
+      console.log('^^^ that is player1Name');
+
+    } else {
+      player2Name = document.getElementById('playerNameModal').value;
+      modal.style.display = 'none';
+      console.log(document.getElementById('playerNameModal').value);
+      console.log('^^^ that is player2Name');
+    }
+
   }
+
 }
 
 function assignPlayerNames() {
   if (player1Name) {
-    document.getElementById('playerNameModal').value = '';
-   document.getElementById('test').textContent = 'Player 2, enter your name below:'
-   modal.style.display = 'block';
+    modal.style.display = 'block';
+   document.getElementById('nameField').textContent = 'Player 2, enter your name below:'
    getNameFromModal(player2Name);
   } else {
-    document.getElementById('test').textContent = 'Player 1, enter your name below:'
+    document.getElementById('nameField').textContent = 'Player 1, enter your name below:'
     modal.style.display = 'block';
     getNameFromModal(player1Name);
     // document.getElementById('playerNameModal').value = '';
+    if (!player2Name) {
+      setTimeout(() => {
+        assignPlayerNames();
+      }, 250)
+    }
   }
 }
 
 window.addEventListener('DOMContentLoaded', () => {
+  console.log('upon DOM load, player1Name is: ', player1Name);
   assignPlayerNames();
+  setTimeout(() => {
+    assignPlayerNames();
+  }, 500);
+
   // modal.style.display = 'none';
 });
 
