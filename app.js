@@ -1,4 +1,48 @@
 const body = document.querySelector('body');
+const modal = document.getElementById('modalOuterDiv');
+const closeModal = document.getElementById('spanClose');
+
+// when DOM loads...
+// trigger modal opening (text should indicate player 1)
+// accept input and save to a variable upon submission
+// change text to player 2
+// accept input and save to another variable upon submission (may need to be a function????)
+
+let player1Name, player2Name;
+
+function getNameFromModal(playerNumber) {
+  document.getElementById('submitButton').onclick = () => {
+    if (playerNumber === 1) {
+      player1Name = document.getElementById('playerNameModal').value;
+    } else {
+      player2Name = document.getElementById('playerNameModal').value;
+    }
+    document.getElementById('playerNameModal').value = '';
+  }
+}
+
+function assignPlayerNames() {
+  if (player1Name) {
+   modal.style.display = 'block';
+   document.querySelector('id', )
+  } else {
+
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  console.log('howdily doodily');
+})
+
+closeModal.addEventListener('click', () => {
+  modal.style.display = 'none';
+});
+
+window.addEventListener('click', () => {
+  if (event.target === modal) {
+    modal.style.display = 'none';
+  }
+});
 
 const clearButton = document.getElementById('clearButton');
 clearButton.addEventListener('click', () => {
@@ -13,8 +57,8 @@ clearButton.addEventListener('click', () => {
   turnsElapsed = 0;
 });
 
-let player1Name = prompt('Player 1, please enter your name!');
-let player2Name = prompt('Player 2, please enter your name!');
+// let player1Name = prompt('Player 1, please enter your name!');
+// let player2Name = prompt('Player 2, please enter your name!');
 
 let allPlayers = [];
 let player1Check = true;
