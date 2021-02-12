@@ -10,29 +10,30 @@ const closeModal = document.getElementById('spanClose');
 
 let player1Name, player2Name;
 
-function getNameFromModal(playerNumber) {
+function getNameFromModal(player) {
   document.getElementById('submitButton').onclick = () => {
-    if (playerNumber === 1) {
-      player1Name = document.getElementById('playerNameModal').value;
-    } else {
-      player2Name = document.getElementById('playerNameModal').value;
-    }
-    document.getElementById('playerNameModal').value = '';
+    player = document.getElementById('playerNameModal').value;
   }
 }
 
 function assignPlayerNames() {
   if (player1Name) {
+    document.getElementById('playerNameModal').value = '';
+   document.getElementById('test').textContent = 'Player 2, enter your name below:'
    modal.style.display = 'block';
-   document.querySelector('id', )
+   getNameFromModal(player2Name);
   } else {
-
+    document.getElementById('test').textContent = 'Player 1, enter your name below:'
+    modal.style.display = 'block';
+    getNameFromModal(player1Name);
+    // document.getElementById('playerNameModal').value = '';
   }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  console.log('howdily doodily');
-})
+window.addEventListener('DOMContentLoaded', () => {
+  assignPlayerNames();
+  // modal.style.display = 'none';
+});
 
 closeModal.addEventListener('click', () => {
   modal.style.display = 'none';
@@ -79,7 +80,7 @@ const Player = function(name) {
   }
 
   if (amIPlayer1) {
-    mark = prompt(`${name}, are you Xs or Os? Please enter either a capital X or capital O.`);
+    /*mark = prompt(`${name}, are you Xs or Os? Please enter either a capital X or capital O.`);*/
     if (mark === 'X') {
       xHasBeenTaken = true;
     }

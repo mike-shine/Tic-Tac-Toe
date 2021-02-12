@@ -99,6 +99,7 @@ td {
 #playerNameModal {
   height: 40px;
   width: 250px;
+  color: white;
 }
 
 #playerNameModal:hover {
