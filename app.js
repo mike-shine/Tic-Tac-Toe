@@ -15,13 +15,13 @@ function getNameFromModal(player) {
     if (!player1Name) {
       player1Name = document.getElementById('playerNameModal').value;
       modal.style.display = 'none';
-      console.log(document.getElementById('playerNameModal').value);
+      console.log(player1Name);
       console.log('^^^ that is player1Name');
 
     } else {
       player2Name = document.getElementById('playerNameModal').value;
       modal.style.display = 'none';
-      console.log(document.getElementById('playerNameModal').value);
+      console.log(player2Name);
       console.log('^^^ that is player2Name');
     }
 
@@ -38,7 +38,6 @@ function assignPlayerNames() {
     document.getElementById('nameField').textContent = 'Player 1, enter your name below:'
     modal.style.display = 'block';
     getNameFromModal(player1Name);
-    // document.getElementById('playerNameModal').value = '';
     if (!player2Name) {
       setTimeout(() => {
         assignPlayerNames();
@@ -50,11 +49,6 @@ function assignPlayerNames() {
 window.addEventListener('DOMContentLoaded', () => {
   console.log('upon DOM load, player1Name is: ', player1Name);
   assignPlayerNames();
-  setTimeout(() => {
-    assignPlayerNames();
-  }, 500);
-
-  // modal.style.display = 'none';
 });
 
 closeModal.addEventListener('click', () => {
@@ -87,6 +81,14 @@ let allPlayers = [];
 let player1Check = true;
 let xHasBeenTaken = false;
 
+function getMarkFromModal() {
+  document.getElementById('nameField').textContent = `${name}, are you Xs or Os? Please enter either a capital X or capital O.`
+  modal.style.display = 'block';
+  document.getElementById('submitButton').onclick = () => {
+   mark = document.getElementById('playerNameModal').value;
+  }
+}
+
 const Player = function(name) {
   const playerName = name;
   const movesPlayed = [];
@@ -103,6 +105,7 @@ const Player = function(name) {
 
   if (amIPlayer1) {
     /*mark = prompt(`${name}, are you Xs or Os? Please enter either a capital X or capital O.`);*/
+    getMarkFromModal();
     if (mark === 'X') {
       xHasBeenTaken = true;
     }
